@@ -1,0 +1,27 @@
+<div class="container">
+    <h3>
+        <button class="btn btn-success" [routerLink]="['/operation', 0]">Add</button>
+        <!-- {{TodoList | json}} -->
+    </h3>
+    <div *ngIf="TodoList.length == 0">
+        ToDo list is empty. Please create your ToDo list.
+    </div>
+    <table class="table" *ngIf="TodoList.length > 0">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of TodoList">
+                <td>{{todo.title}}</td>
+                <td>{{todo.description}}</td>
+                <td>
+                    <button class="btn btn-primary" [routerLink]="['/operation', todo._id]">Edit</button>
+                    <button class="btn btn-danger ml-2" (click)="onDelete(todo._id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
